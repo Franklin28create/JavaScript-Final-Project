@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript final project</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/b57a9e2d71.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <figure class="nav__img--wrapper">
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+        <img
+          src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+          class="nav__img"
+        />
+      </figure>
+      <div class="row">
+        <div class="nav--info">
+          <div class="nav__logo">
+            <b class="gold nav__logo--img">FR</b
+            ><span class="nav__logo--text">TV</span>
+          </div>
+          <ul class="nav__links--list">
+            <li>
+              <a href="#" class="nav__link link__hover-effect">About</a>
+            </li>
+            <li>
+              <a href="#" class="nav__link link__hover-effect">Contact</a>
+            </li>
+            <li class="nav__link-list--primary">
+              <a href="#movies" class="nav__link nav__link--primary"
+                >Browse Movies</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            class="search"
+            placeholder="Search by Movie Title..."
+            onchange="movies(event)"
+          />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </nav>
+    <section id="movies">
+      <div class="container">
+        <div class="row all__movies--wrapper">
+          <div class="movies__results">
+            <h1 class="movies__results--title">
+              Recent
+              <br />
+              <b class="gold">Christmas Movies</b>
+            </h1>
+            <select id="filter" onchange="filterYear(event)">
+              <option value="" selected disabled>Filter By year</option>
+              <option value="NEW_TO_OLD">New to Old</option>
+              <option value="OLD_TO_NEW">Old to New</option>
+            </select>
+          </div>
+          <div class="movies--wrapper">
+            <div class="movies__loading--spinner">
+              <span class="spinner__little"></span>
+              <span class="spinner__little"></span>
+              <span class="spinner__little"></span>
+              <span class="spinner__little"></span>
+            </div>
+            <!-- <div class="movie">
+              <div class="movie__description">
+                <h1 class="movie__title">Movie Title</h1>
+                <p class="movie__year">Movie release date</p>
+              </div>
+              <div class="movie__img--wrapper">
+                <img
+                  src="https://scoutlife.org/wp-content/uploads/2011/04/movies-featured.jpg"
+                  class="movie__img"
+                />
+                <div class="movie__CAT--para">WATCH NOW</div>
+                <a href="#" class="play__btn click">
+                  <i class="fa-solid fa-play"></i>
+                </a>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="footer__info">
+          <div class="row">
+            <div class="nav__logo footer__logo">
+              <div class="footer__logo--img">
+                <a href="#" class="backToTop">
+                  <b class="gold nav__logo--img">FR</b
+                  ><span class="nav__logo--text">TV</span>
+                </a>
+              </div>
+              <ul class="footer__links">
+                <a href="#">
+                  <li class="footer__link">About</li>
+                </a>
+                <a href="#">
+                  <li class="footer__link">Contact</li>
+                </a>
+                <a href="#">
+                  <li class="footer__link footer__link--primary">
+                    More Movies
+                  </li>
+                </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
