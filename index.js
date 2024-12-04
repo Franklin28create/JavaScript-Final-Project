@@ -52,39 +52,75 @@ function resultsHTML(searchInput) {
                 </select>
                 </div>`;
               }
+
+function tooManyresults(search) {
+  return `<div class="movies__top" style="display: flex; justify-content: center">
+    <h1 class="movies__results--title">
+    Too many Results for <b class="gold">"${search}"</b>, try being more specific...
+    </h1>
+    <select id="filter">
+    <option value="" selected disabled>Search before filtering!</option>
+    </select>
+    </div>`;
+}
               
 async function movies(event) {
   const search = event.target.value;
-  results.classList += ` show__filter`;
+  results.classList.add('show__filter');
   results.innerHTML = resultsHTML(search);
-
   localStorage.setItem(
     `movieSearch`,
     `http://www.omdbapi.com/?apikey=3608d43&s=${search}`
   );
-  const response = new Promise(resolve => {
+  moviesWrapper.classList.add('movies__loading'); // Add spinner class
+  const response = await new Promise(resolve => {
     setTimeout(() => {
       resolve(
-        fetch(
-          `http://www.omdbapi.com/?apikey=3608d43&s=${search}`
-        )
-      )
+        fetch(`http://www.omdbapi.com/?apikey=3608d43&s=${search}`)
+      );
     }, 2000);
-  })
-  
-  moviesWrapper.classList += ` movies__loading`;
-  results.classList.remove(`display__results`, `show__filter`);
-  
+  });
   const allMovieData = await response;
   const data = await allMovieData.json();
-
-  moviesWrapper.classList.remove(`movies__loading`);
-  results.classList += ` display__results show__filter`;
-  
+  // Remove spinner class after fetching data
+  moviesWrapper.classList.remove('movies__loading');
+  results.classList.add('display__results', 'show__filter');
   const movieData = data.Search.slice(0, 6);
-  
-  moviesWrapper.innerHTML = movieData.map((movie) => movieHTML(movie)).join(``);
+  moviesWrapper.innerHTML = movieData.map(movie => movieHTML(movie)).join('');
 }
+
+// async function movies(event) {
+//   const search = event.target.value;
+//   results.classList += ` show__filter`;
+//   results.innerHTML = resultsHTML(search);
+  
+//   localStorage.setItem(
+//     `movieSearch`,
+//     `http://www.omdbapi.com/?apikey=3608d43&s=${search}`
+//   );
+//   const response = new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve(
+//         fetch(
+//           `http://www.omdbapi.com/?apikey=3608d43&s=${search}`
+//         )
+//       )
+//     }, 2000);
+//   })
+  
+//   moviesWrapper.classList += ` movies__loading`;
+//   results.classList.remove(`display__results`, `show__filter`);
+  
+//   const allMovieData = await response;
+//   const data = await allMovieData.json();
+
+//   moviesWrapper.classList.remove(`movies__loading`);
+//   results.classList += ` display__results show__filter`;
+    
+//   const movieData = data.Search.slice(0, 6);
+  
+//   moviesWrapper.innerHTML = movieData.map((movie) => movieHTML(movie)).join(``);
+// }
 
 async function filterYear(event) {
   const filterValue = event.target.value;

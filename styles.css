@@ -293,6 +293,10 @@ nav {
     justify-content: space-between;
 }
 
+.hide__movies .movie{
+ display: none;
+}
+
 .movies__loading {
   display: flex;
   justify-content: center;
